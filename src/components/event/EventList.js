@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getEvents } from "../../managers/EventManager"
+import { deleteEvent, getEvents } from "../../managers/EventManager"
 import "./Event.css"
 
 export const EventList = (props) => {
 
     const navigate = useNavigate()
     const [ events, setEvents ] = useState([])
+    const [ refresh, setRefresh ] = useState(true)
+    
+    function refreshPage() {
+        window.location.reload(false)
+    }
 
     useEffect(() => {
         getEvents().then(data => setEvents(data))
-    }, [])
+    }, [,refresh])
+
+    const handleClick = (id) => {
+        deleteEvent(id).then(refreshPage)
+    }  
 
     return (<>
-
-        <button className="btn btn-2 btn-sep icon-create"
-            onClick={() => {
-                navigate({ pathname: "/events/new" })
-            }}
-        >Register New Event</button>
-
+        
         <article className="events">
+
+            <button className="btn btn-2 btn-sep icon-create"
+                onClick={() => {
+                    navigate({ pathname: "/events/new" })
+                }}>Register New Event</button>
+
             {
                 events.map(event => {
                     return <section key={`event--${event.id}`} className="event">
@@ -28,9 +37,21 @@ export const EventList = (props) => {
                         <div className="event__game">Game: {event?.game?.name}</div>
                         <div className="event__description">Description: {event?.description}</div>
                         <div className="event__date">Date: {event?.date} @ {event?.time}</div>
-                    </section>
-                })
-            }
+
+                    <div className="event__footer">
+                            <button className="btn" onClick={() => {
+                                navigate({ pathname: `/events/${event.id}`})
+                                }}>Edit</button>
+                    
+                            <button className="btn" onClick={() => {
+                                handleClick(event.id)
+                                }}>Delete</button>
+                    </div>
+
+                </section>
+            })
+        }
+
         </article>
         </>
     )
