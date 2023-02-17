@@ -22,7 +22,7 @@ export const GameList = (props) => {
             {
                 games.map(game => {
                     return <section key={`game--${game.id}`} className="game">
-                        <div className="game__title">{game?.name} by {game?.gamer?.user?.first_name}</div>
+                        <div className="game__title">{game?.name} by {game?.gamer?.full_name}</div>
                         <div className="game__players">{game?.num_of_players} players needed</div>
                         <div className="game__skillLevel">Skill level is {game?.skill_level}</div>
                     </section>
