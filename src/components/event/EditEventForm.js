@@ -112,7 +112,7 @@ export const EditEventForm = ({token}) => {
                     }
 
                     updateEvent(eventId, event)
-                        .then(() => navigate(`/events/${eventId}`))
+                        .then(() => navigate(`/events`))
                 }}
                 className="btn btn-primary">Update Event</button>
         </form>
