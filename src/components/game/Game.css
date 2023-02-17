@@ -1,0 +1,18 @@
+.gameForm, .games { 
+    padding: 50px; 
+    
+}
+
+.gameForm, .game { 
+    border: 1px solid #694f43; 
+    background-color: #8f391e;
+    color: #fef2e6;
+    margin: 40px; 
+    opacity: 95%;
+    padding: 20px; 
+}
+
+.deleteButton, .editButton { 
+    padding: 10px; 
+    margin: 5px; 
+}

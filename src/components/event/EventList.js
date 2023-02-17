@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getEvents } from "../../managers/EventManager"
+import "./Event.css"
 
 export const EventList = (props) => {
 

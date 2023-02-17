@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from "../../managers/EventManager"
 import { getGames } from "../../managers/GameManager"
+import "./Event.css"
+
 
 export const EventForm = ({token}) => {
 
@@ -13,7 +15,7 @@ export const EventForm = ({token}) => {
         title: "",
         description: "",
         organizer: token,
-        date: 0,
+        date: "",
         time: ""
     })
 
@@ -66,9 +68,9 @@ export const EventForm = ({token}) => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Amount of Players Recommended: </label>
-                    <input type="number" name="date" id="date" required autoFocus className="form-control"
-                        value={newEvent.date}
+                    <label htmlFor="number">Amount of Players Recommended: </label>
+                    <input type="number" name="number" id="number" required autoFocus className="form-control"
+                        value={newEvent.number}
                         onChange={handleInputChange}
                     />
                 </div>
